@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  /* --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255; */
+  --custom-oil-black: #0c0c0c;
+  --custom-obsidian: #0b1215;
+  --custom-dark-slate: #0d1717;
+  --custom-midnight-blue: #101720;
+  --custom-charcoal-gray: #171717;
+  --custom-deep-navy: #011222;
+  --custom-rich-black: #020d19;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #F6F6F6;
+}
+
+nav {
+  background-color: var(--custom-obsidian);
+}
+
+footer {
+  background-color: var(--custom-charcoal-gray);
+}
+
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
