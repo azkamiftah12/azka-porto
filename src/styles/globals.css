@@ -24,7 +24,37 @@ body {
   background: #F6F6F6;
 }
 
+/* button hover loading animation start  */
+.custom-ease-in {
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
 
+button:hover .custom-ease-in {
+  width: 100%;
+}
+
+a:hover .custom-ease-in {
+  width: 100%;
+}
+/* button hover loading animation end  */
+
+/* popup animation start */
+@keyframes popUp {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-popUp {
+  animation: popUp 1.2s ease-in forwards;
+}
+/* popup animation end  */
 
 
 

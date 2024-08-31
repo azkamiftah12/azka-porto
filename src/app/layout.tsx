@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "../styles/globals.css";
+import "../styles/googleIcons.css";
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import Navbar from "../components/layouts/navbar";
 import Footer from "../components/layouts/footer";
 
