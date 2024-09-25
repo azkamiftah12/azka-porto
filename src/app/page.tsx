@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Services from "@/components/home/services";
 import Contact from "@/components/home/contact";
 import Main from "@/components/home/main";
+import Experiences from "@/components/home/experiences";
+import Projects from "@/components/home/projects";
 
 export const metadata: Metadata = {
   title: "Home - Azka",
@@ -13,6 +15,8 @@ export default function Home() {
     <div>
       <Main/>
       <Services/>
+      <Experiences/>
+      <Projects/>
       <Contact/>
     </div>
   </>;

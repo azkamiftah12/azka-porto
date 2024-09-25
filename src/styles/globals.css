@@ -56,6 +56,23 @@ a:hover .custom-ease-in {
 }
 /* popup animation end  */
 
+/* popDown animation start */
+@keyframes popDown {
+  0% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-popDown {
+  animation: popDown 1.2s ease-in forwards;
+}
+/* popDown animation end  */
+
 
 
 @layer utilities {

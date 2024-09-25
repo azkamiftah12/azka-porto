@@ -5,10 +5,10 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const Main = () => {
     return(
-        <div id="home" className="min-h-96 w-full grid grid-cols-2 grid-flow-row md:grid-flow-col text-custom-obsidian sticky top-16 py-20">
+        <div id="home" className="min-h-96 w-full grid grid-cols-2 grid-flow-row md:grid-flow-col text-custom-obsidian py-16">
             <div className="flex flex-col pl-20 px-10">
                 <div className="text-4xl font-extrabold mb-4">Welcome <span className="text-3xl">to</span> My <span className="text-custom-yellow">Personal Website</span></div>
-                <div className="text-3xl font-extrabold mb-4">My <span className="text-custom-yellow">Name</span> ....</div>
+                <div className="text-3xl font-extrabold mb-10">My <span className="text-custom-yellow">Name</span> is ....</div>
                 <div className="text-4xl font-extrabold mb-16"><span className="text-custom-yellow shadow-md shadow-custom-yellow p-1">AZKA</span> Miftah Muhammad</div>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                 <div className="text-3xl font-extrabold mb-16">I'm a <span className="bg-custom-yellow shadow-md shadow-custom-yellow w-fit text-xl font-bold p-2">Web Developer</span></div>

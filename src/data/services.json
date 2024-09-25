@@ -2,17 +2,27 @@
     {
       "id": 1,
       "logo": "/path/to/logo1.png",
-      "desc": "Description for logo 1"
+      "desc": "React JS"
     },
     {
       "id": 2,
       "logo": "/path/to/logo2.png",
-      "desc": "Description for logo 2"
+      "desc": "Next JS"
     },
     {
       "id": 3,
       "logo": "/path/to/logo3.png",
-      "desc": "Description for logo 3"
+      "desc": "Node JS"
+    },
+    {
+      "id": 4,
+      "logo": "/path/to/logo1.png",
+      "desc": "Laravel"
+    },
+    {
+      "id": 5,
+      "logo": "/path/to/logo2.png",
+      "desc": "Codeigniter"
     }
   ]
   
