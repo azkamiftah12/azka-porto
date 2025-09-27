@@ -1,28 +1,42 @@
 [
-    {
-      "id": 1,
-      "logo": "/path/to/logo1.png",
-      "desc": "React JS"
-    },
-    {
-      "id": 2,
-      "logo": "/path/to/logo2.png",
-      "desc": "Next JS"
-    },
-    {
-      "id": 3,
-      "logo": "/path/to/logo3.png",
-      "desc": "Node JS"
-    },
-    {
-      "id": 4,
-      "logo": "/path/to/logo1.png",
-      "desc": "Laravel"
-    },
-    {
-      "id": 5,
-      "logo": "/path/to/logo2.png",
-      "desc": "Codeigniter"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "logo": "/logo/reactJS.png",
+    "desc": "React JS"
+  },
+  {
+    "id": 2,
+    "logo": "/logo/nextJS.png",
+    "desc": "Next JS"
+  },
+  {
+    "id": 3,
+    "logo": "/logo/nodeJS.png",
+    "desc": "Node JS"
+  },
+  {
+    "id": 4,
+    "logo": "/logo/angularJS.png",
+    "desc": "Angular JS"
+  },
+  {
+    "id": 5,
+    "logo": "/logo/dotnet.png",
+    "desc": "Dotnet"
+  },
+  {
+    "id": 6,
+    "logo": "/logo/laravel.png",
+    "desc": "Laravel"
+  },
+  {
+    "id": 7,
+    "logo": "/logo/codeigniter.png",
+    "desc": "Codeigniter"
+  },
+  {
+    "id": 8,
+    "logo": "/logo/java.png",
+    "desc": "Java"
+  }
+]

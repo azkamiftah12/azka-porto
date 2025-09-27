@@ -11,13 +11,15 @@ export const metadata: Metadata = {
   description: "Website Portofolio Azka Miftah Muhammad",
 };
 export default function Home() {
-  return <>
-    <div>
-      <Main/>
-      <Services/>
-      <Experiences/>
-      <Projects/>
-      <Contact/>
-    </div>
-  </>;
+  return (
+    <>
+      <div>
+        <Main />
+        <Services />
+        <Projects />
+        <Experiences />
+        <Contact />
+      </div>
+    </>
+  );
 }

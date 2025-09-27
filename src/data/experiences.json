@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "image": "/img/azka-1.jpg",
+    "Title": "huhuhu",
+    "desc": "React JS",
+    "dateFrom": "2022",
+    "dateTo": "Present",
+    "tags": ["ReactJS", "NextJS", "TailwindCSS"]
+  }
+]

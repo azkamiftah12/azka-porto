@@ -24,19 +24,18 @@ const Navbar = () => {
       setLastScrollY(currentScrollY);
 
       // set active section for scrolling start
-      const sections = ["home", "experiences", "projects", "contact", "services"];
-      
+      const sections = ["home", "services", "projects", "experiences", "contact"];
+
       sections.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
             setActiveSection(sectionId);
           }
         }
       });
       // set active section for scrolling end
-
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -45,10 +44,9 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
 
-
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setActiveSection('home');
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setActiveSection("home");
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -60,12 +58,29 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`flex items-center min-h-20 gap-10 sticky top-1 m-6 rounded-md px-16 z-10 transition duration-500 ease-in ${transparent ? 'bg-transparent text-custom-oil-black' : 'bg-custom-oil-black shadow-lg'} ${isFaded ? 'opacity-50' : 'opacity-100'}`}>
-      <div onClick={scrollToTop} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === 'home' ? 'border-b-2 border-custom-yellow font-extrabold' : 'font-semibold'}`}>Home</div>
-      <div onClick={() => scrollToSection("services")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === 'services' ? 'border-b-2 border-custom-yellow font-extrabold' : 'font-semibold'}`}>Services</div>
-      <div onClick={() => scrollToSection("experiences")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === 'experiences' ? 'border-b-2 border-custom-yellow font-extrabold' : 'font-semibold'}`}>Experiences</div>
-      <div onClick={() => scrollToSection("projects")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === 'projects' ? 'border-b-2 border-custom-yellow font-extrabold' : 'font-semibold'}`}>Projects</div>
-      <div onClick={() => scrollToSection("contact")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === 'contact' ? 'border-b-2 border-custom-yellow font-extrabold' : 'font-semibold'}`}>Contact Me</div>
+    <nav
+      className={`flex items-center min-h-20 gap-10 sticky top-1 m-6 rounded-md px-16 z-10 transition duration-500 ease-in ${transparent ? "bg-transparent text-custom-oil-black" : "bg-custom-oil-black shadow-lg"} ${
+        isFaded ? "opacity-50" : "opacity-100"
+      }`}
+    >
+      <div onClick={scrollToTop} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "home" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
+        Home
+      </div>
+      <div onClick={() => scrollToSection("services")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "services" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
+        Services
+      </div>
+      <div onClick={() => scrollToSection("projects")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "projects" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
+        Projects
+      </div>
+      <div
+        onClick={() => scrollToSection("experiences")}
+        className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "experiences" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}
+      >
+        Experiences
+      </div>
+      <div onClick={() => scrollToSection("contact")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "contact" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
+        Contact Me
+      </div>
     </nav>
   );
 };
