@@ -153,7 +153,7 @@ const Footer = () => {
             <ul className="flex flex-wrap gap-4 text-xs">
               <li>
                 <a href="#" className="text-gray-500 transition hover:opacity-75">
-                  Terms & Conditions
+                  Developer Notes
                 </a>
               </li>
 

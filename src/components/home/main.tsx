@@ -5,8 +5,8 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const Main = () => {
   return (
-    <div id="home" className="min-h-[90vh] w-full grid grid-cols-1 md:grid-cols-2 text-custom-obsidian p-16">
-      <div className="flex flex-col pl-20 px-10">
+    <div id="home" className="min-h-[90vh] w-full grid grid-cols-1 md:grid-cols-2 text-custom-obsidian p-8 md:p-16">
+      <div className="flex flex-col md:pl-20 md:px-10">
         <div className="text-4xl font-extrabold mb-4">
           Welcome <span className="text-3xl">to</span> My <span className="text-custom-yellow">Personal Website, </span>
           My <span className="text-custom-yellow">Name</span> is ....

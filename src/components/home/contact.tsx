@@ -44,16 +44,16 @@ const Contact = () => {
 
   return (
     <div id="contact" className="sticky top-0">
-      <div className="bg-custom-white min-h-8 w-full p-16 text-custom-yellow pb-48">
+      <div className="bg-custom-white min-h-8 w-full p-8 md:p-16 text-custom-yellow md:pb-48">
         <div className="text-4xl font-extrabold text-center">About Me</div>
       </div>
 
-      <div className="h-72 bg-custom-obsidian p-16 m-6 rounded-xl">
+      <div className="h-72 bg-custom-obsidian p-8 md:p-16 m-6 rounded-xl">
         <div className="grid gap-14 md:grid-cols-3 md:gap-5">
           {cards.map((card, idx) => (
             <div key={idx} className="rounded-xl bg-white p-6 text-center shadow-xl -translate-y-48">
               <div className={`mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full shadow-lg ${card.color}`}>{icons[card.title]}</div>
-              <h1 className="text-custom-yellow mb-3 text-xl font-bold md:px-14">{card.title}</h1>
+              <h1 className="text-custom-yellow mb-3 text-xl font-bold">{card.title}</h1>
               <p className="px-4 text-gray-500">{card.text}</p>
             </div>
           ))}
