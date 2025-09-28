@@ -17,7 +17,7 @@ const Projects = () => {
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-2xl mb-2">{item.Title}</div>
-                <p className="text-gray-700 text-base">{item.desc}</p>
+                <p className="text-gray-700 text-xs">{item.desc}</p>
               </div>
               <div className="px-6 pt-4 pb-2">
                 {item.tags.map((tag, index) => (
