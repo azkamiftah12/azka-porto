@@ -24,5 +24,8 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
       - name: Deploy to Vercel
-        run: npx vercel --prod --token=${{ secrets.AZKA_PORTO_VERCEL_TOKEN }} --yes --confirm
+        run: vercel --prod --token=${{ secrets.AZKA_PORTO_VERCEL_TOKEN }} --yes --confirm
