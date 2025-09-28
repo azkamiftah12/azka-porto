@@ -11,14 +11,25 @@
     "tags": ["ReactJS", "NextJS", "TailwindCSS"]
   },
   {
-    "id": 1,
+    "id": 2,
     "logo": "/logo/homecredit.png",
     "office": "PT Home Credit Indonesia",
-    "title": "Full Stack Developer",
+    "title": "Frontend Developer Intern",
     "desc": "React JS",
     "dateFrom": "August 2023",
     "dateTo": "December 2023",
     "brandColor": "#e11931",
+    "tags": ["ReactJS", "NextJS", "TailwindCSS"]
+  },
+  {
+    "id": 3,
+    "logo": "/logo/ntg.jpeg",
+    "office": "PT Nusa Tekno Global",
+    "title": "Frontend Engineer Intern",
+    "desc": "React JS",
+    "dateFrom": "August 2023",
+    "dateTo": "December 2023",
+    "brandColor": "#6f9600 ",
     "tags": ["ReactJS", "NextJS", "TailwindCSS"]
   }
 ]
