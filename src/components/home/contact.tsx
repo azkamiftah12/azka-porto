@@ -2,7 +2,7 @@ const Contact = () => {
   return (
     <div id="contact" className="sticky top-0">
       <div className="bg-custom-white min-h-96 w-full p-16 text-custom-yellow">
-        <div className="text-4xl font-extrabold text-center">Contact Me</div>
+        <div className="text-4xl font-extrabold text-center">About Me</div>
       </div>
     </div>
   );
