@@ -44,7 +44,7 @@ const Contact = () => {
 
   return (
     <div id="contact" className="sticky top-0">
-      <div className="bg-custom-white min-h-8 w-full p-8 md:p-16 text-custom-yellow md:pb-48">
+      <div className="bg-custom-white min-h-8 w-full p-8 md:p-16 text-custom-yellow pb-48 md:pb-48 mt-24">
         <div className="text-4xl font-extrabold text-center">About Me</div>
       </div>
 
