@@ -5,12 +5,13 @@ import MainButton from "../utility/mainButton";
 
 const Projects = () => {
   return (
-    <div id="projects" className="sticky top-0">
+    // <div id="projects" className="sticky top-0">
+    <div id="projects" className="">
       <div className="bg-custom-white min-h-96 w-full p-16 text-custom-yellow">
         <div className="text-4xl font-extrabold text-center">Projects</div>
         <div className="flex flex-row justify-center gap-4 md:px-20 py-8">
           {projects.map((item) => (
-            <div key={item.id} className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div key={item.id} className="w-[24rem] rounded overflow-hidden shadow-lg">
               <div className="relative w-full h-64">
                 <Image src={item.image} alt={item.Title} fill className="object-cover"></Image>
               </div>
@@ -25,7 +26,7 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
-              <div className="px-6 pt-4 pb-2">
+              <div className="px-6 pt-4 pb-2 flex justify-center">
                 <MainButton Text="Detail" Icon="open_in_browser" ModalId="huhu" />
               </div>
             </div>

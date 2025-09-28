@@ -59,8 +59,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`flex items-center min-h-20 gap-10 sticky top-1 m-6 rounded-md px-16 z-10 transition duration-500 ease-in ${transparent ? "bg-transparent text-custom-oil-black" : "bg-custom-oil-black shadow-lg"} ${
-        isFaded ? "opacity-50" : "opacity-100"
+      className={`flex items-center min-h-16 gap-10 sticky top-1 m-6 rounded-md px-16 z-10 transition duration-500 ease-in ${transparent ? "bg-transparent text-custom-oil-black" : "bg-custom-oil-black shadow-lg"} ${
+        isFaded ? "opacity-30" : "opacity-100"
       }`}
     >
       <div onClick={scrollToTop} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "home" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>

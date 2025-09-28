@@ -1,11 +1,24 @@
 [
   {
     "id": 1,
-    "image": "/img/azka-1.jpg",
-    "Title": "huhuhu",
+    "logo": "/logo/citilink.png",
+    "office": "PT Citilink Indonesia",
+    "title": "Full Stack Developer",
     "desc": "React JS",
-    "dateFrom": "2022",
+    "dateFrom": "November 2024",
     "dateTo": "Present",
+    "brandColor": "#52BB0B",
+    "tags": ["ReactJS", "NextJS", "TailwindCSS"]
+  },
+  {
+    "id": 1,
+    "logo": "/logo/homecredit.png",
+    "office": "PT Home Credit Indonesia",
+    "title": "Full Stack Developer",
+    "desc": "React JS",
+    "dateFrom": "August 2023",
+    "dateTo": "December 2023",
+    "brandColor": "#e11931",
     "tags": ["ReactJS", "NextJS", "TailwindCSS"]
   }
 ]
