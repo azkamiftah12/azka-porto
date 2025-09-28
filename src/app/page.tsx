@@ -5,6 +5,7 @@ import Contact from "@/components/home/contact";
 import Main from "@/components/home/main";
 import Experiences from "@/components/home/experiences";
 import Projects from "@/components/home/projects";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Home - Azka",
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <div>
+        <Analytics />
         <Main />
         <Services />
         <Projects />
