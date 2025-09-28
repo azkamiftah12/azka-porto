@@ -40,7 +40,7 @@ const Services = () => {
                 {/* <FontAwesomeIcon className="ml-2" icon={faJs} /> */}
                 <Image src={item.logo} alt={item.desc} width={64} height={64}></Image>
               </div>
-              <div>{item.desc}</div>
+              <div className="relative inline-block text-custom-white after:content-[''] after:block after:w-1/2 after:mx-auto after:border-b after:border-custom-yellow">{item.desc}</div>
             </div>
           ))}
         </div>

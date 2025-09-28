@@ -3,7 +3,7 @@
     "id": 1,
     "image": "/img/azka-1.jpg",
     "Title": "Garpu",
-    "desc": "React JS",
+    "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
     "dateFrom": "2022",
     "dateTo": "Present",
     "tags": ["Laravel", "MySQL", "Bootstrap"]
@@ -12,7 +12,7 @@
     "id": 2,
     "image": "/img/azka-1.jpg",
     "Title": "Pastiori",
-    "desc": "React JS",
+    "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
     "dateFrom": "2022",
     "dateTo": "Present",
     "tags": ["Laravel", "MySQL", "TailwindCSS"]
@@ -21,7 +21,7 @@
     "id": 3,
     "image": "/img/azka-1.jpg",
     "Title": "NTG Elearning",
-    "desc": "Next JS",
+    "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
     "dateFrom": "2022",
     "dateTo": "Present",
     "tags": ["NextJS", "TailwindCSS"]

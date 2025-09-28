@@ -5,30 +5,29 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const Main = () => {
   return (
-    <div id="home" className="min-h-[90vh] w-full grid grid-cols-1 md:grid-cols-2 text-custom-obsidian p-8 md:p-16">
+    <div id="home" className="min-h-[90vh] w-full grid grid-cols-1 lg:grid-cols-2 text-custom-obsidian p-8 md:p-16">
       <div className="flex flex-col md:pl-20 md:px-10">
-        <div className="text-4xl font-extrabold mb-4">
-          Welcome <span className="text-3xl">to</span> My <span className="text-custom-yellow">Personal Website, </span>
+        <div className="text-2xl md:text-4xl font-extrabold mb-4 text-center md:text-start">
+          Welcome <span className="text-xl md:text-3xl">to</span> My <span className="text-custom-yellow">Personal Website, </span>
           My <span className="text-custom-yellow">Name</span> is ....
         </div>
         {/* <div className="text-3xl font-extrabold mb-10">
           My <span className="text-custom-yellow">Name</span> is ....
         </div> */}
-        <div className="text-4xl font-extrabold mb-16">
+        <div className="text-2xl md:text-4xl font-extrabold my-8 md:my-16 text-center md:text-start">
           <span className="text-custom-yellow shadow-md shadow-custom-yellow p-1">AZKA</span> Miftah Muhammad
         </div>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        <div className="text-3xl font-extrabold mb-16">
+        <div className="text-xl md:text-3xl font-extrabold mt-8 mb-8 md:mt-0 md:mb-16 text-center md:text-start">
           I&apos;m <span className="bg-custom-yellow shadow-md shadow-custom-yellow w-fit text-xl font-bold p-2">Web Developer</span>
         </div>
-        <div className="mb-8 inline-flex gap-8">
+        <div className="md:mb-8 inline-flex gap-8">
           <MainButton Text="Learn More" Icon="arrow_downward" Url="#services" />
           <a
             href="https://www.linkedin.com/in/azka-miftah-muhammad/"
             target="blank"
             className="flex justify-center items-center  border border-[#0077B5] border-b-8 shadow-2xl text-custom-obsidian hover-animate font-bold text-center whitespace-nowrap py-2 px-5 mt-5 rounded-md mb-10 relative overflow-hidden hover:text-custom-white ease-linear duration-500"
           >
-            <div className="inline-flex items-center z-10 text-xl">
+            <div className="inline-flex items-center z-10 text-md md:text-xl">
               Linked In
               <FontAwesomeIcon className="ml-2" icon={faLinkedin} />
             </div>

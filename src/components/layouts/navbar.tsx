@@ -1,11 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isFaded, setIsFaded] = useState(false);
   const [transparent, setTransparent] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,9 +25,8 @@ const Navbar = () => {
       }
       setLastScrollY(currentScrollY);
 
-      // set active section for scrolling start
+      // active section highlight
       const sections = ["home", "services", "projects", "experiences", "contact"];
-
       sections.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -35,52 +36,82 @@ const Navbar = () => {
           }
         }
       });
-      // set active section for scrolling end
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setActiveSection("home");
+    setIsMenuOpen(false);
   };
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     setActiveSection(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    setIsMenuOpen(false);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
   };
+
+  const navClasses = (id: string) => `text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === id ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`;
 
   return (
     <nav
-      className={`flex items-center min-h-16 gap-10 sticky top-1 m-6 rounded-md px-16 z-10 transition duration-500 ease-in ${transparent ? "bg-transparent text-custom-oil-black" : "bg-custom-oil-black shadow-lg"} ${
-        isFaded ? "opacity-30" : "opacity-100"
-      }`}
+      className={`flex items-center justify-between min-h-16 sticky top-1 m-6 rounded-md px-6 md:px-16 z-20 transition duration-500 ease-in 
+        ${transparent ? "bg-transparent text-custom-oil-black" : "bg-custom-oil-black shadow-lg"} 
+        ${isFaded ? "opacity-30" : "opacity-100"}`}
     >
-      <div onClick={scrollToTop} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "home" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
-        Home
+      {/* Logo / Brand */}
+      {/* <div onClick={scrollToTop} className="md:hidden text-2xl font-bold cursor-pointer">
+        Azka Muhammad
+      </div> */}
+
+      {/* Desktop menu */}
+      <div className="hidden md:flex gap-10">
+        <div onClick={scrollToTop} className={navClasses("home")}>
+          Home
+        </div>
+        <div onClick={() => scrollToSection("services")} className={navClasses("services")}>
+          Services
+        </div>
+        <div onClick={() => scrollToSection("projects")} className={navClasses("projects")}>
+          Projects
+        </div>
+        <div onClick={() => scrollToSection("experiences")} className={navClasses("experiences")}>
+          Experiences
+        </div>
+        <div onClick={() => scrollToSection("contact")} className={navClasses("contact")}>
+          Contact Me
+        </div>
       </div>
-      <div onClick={() => scrollToSection("services")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "services" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
-        Services
+
+      {/* Mobile burger */}
+      <div className="md:hidden">
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}</button>
       </div>
-      <div onClick={() => scrollToSection("projects")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "projects" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
-        Projects
-      </div>
-      <div
-        onClick={() => scrollToSection("experiences")}
-        className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "experiences" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}
-      >
-        Experiences
-      </div>
-      <div onClick={() => scrollToSection("contact")} className={` text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === "contact" ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`}>
-        Contact Me
-      </div>
+
+      {/* Mobile dropdown menu */}
+      {isMenuOpen && (
+        <div className={`absolute top-full left-0 right-0 mt-2 rounded-md shadow-lg flex flex-col items-center gap-4 py-6 bg-custom-oil-black text-white md:hidden`}>
+          <div onClick={scrollToTop} className={navClasses("home")}>
+            Home
+          </div>
+          <div onClick={() => scrollToSection("services")} className={navClasses("services")}>
+            Services
+          </div>
+          <div onClick={() => scrollToSection("projects")} className={navClasses("projects")}>
+            Projects
+          </div>
+          <div onClick={() => scrollToSection("experiences")} className={navClasses("experiences")}>
+            Experiences
+          </div>
+          <div onClick={() => scrollToSection("contact")} className={navClasses("contact")}>
+            Contact Me
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
