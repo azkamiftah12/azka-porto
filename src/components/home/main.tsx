@@ -36,7 +36,7 @@ const Main = () => {
         </div>
       </div>
       <div className="grid justify-center">
-        <Image className="shadow-2xl shadow-custom-yellow rounded-md" src="/img/azka-1.jpg" width={300} height={0} alt="Photo Azka Miftah Muhammad" />
+        <Image className="shadow-2xl shadow-gray-700 rounded-md" src="/img/azka-generated.png" width={300} height={0} alt="Photo Azka Miftah Muhammad" />
       </div>
     </div>
   );
