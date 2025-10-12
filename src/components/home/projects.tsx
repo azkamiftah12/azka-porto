@@ -9,11 +9,11 @@ const Projects = () => {
     <div id="projects" className="">
       <div className="bg-custom-white min-h-96 w-full p-8 md:p-16 text-custom-yellow">
         <div className="text-4xl font-extrabold text-center">Projects</div>
-        <div className="flex flex-row justify-center gap-4 md:px-20 py-8">
+        <div className="flex flex-row gap-4 md:px-20 py-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
           {projects.map((item) => (
-            <div key={item.id} className="w-[24rem] rounded overflow-hidden shadow-lg">
+            <div key={item.id} className="w-[24rem] flex-shrink-0 rounded overflow-hidden shadow-lg snap-center">
               <div className="relative w-full h-64">
-                <Image src={item.image} alt={item.Title} fill className="object-cover"></Image>
+                <Image src={item.image} alt={item.Title} fill className="object-cover" />
               </div>
               <div className="px-6 py-4">
                 <div className="font-bold text-2xl mb-2">{item.Title}</div>

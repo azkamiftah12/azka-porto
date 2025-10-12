@@ -30,12 +30,12 @@ const Services = () => {
 
   return (
     // <div id="services" ref={servicesRef} className="sticky top-0">
-    <div id="services" ref={servicesRef} className="m-6">
-      <div className="bg-custom-obsidian min-h-96 rounded-xl w-full p-8 md:p-16 md:p-28 text-custom-yellow">
+    <div id="services" ref={servicesRef} className="m-4 md:m-6">
+      <div className="bg-custom-obsidian min-h-96 rounded-xl w-full shadow-lg p-8 md:p-16 md:p-28 text-custom-yellow">
         <div className={`text-4xl font-extrabold text-center ${isVisible ? "animate-popDown" : "opacity-0"}`}>Services</div>
-        <div className={`flex flex-wrap justify-center md:px-20 py-8 ${isVisible ? "animate-popUp" : "opacity-0"}`}>
+        <div className={`flex flex-wrap justify-center md:px-16 py-8 ${isVisible ? "animate-popUp" : "opacity-0"}`}>
           {services.map((item) => (
-            <div key={item.id} className="flex flex-col items-center justify-center gap-4 my-8 md:w-1/4">
+            <div key={item.id} className="flex flex-col items-center justify-center gap-4 my-8 w-1/3 md:w-1/4">
               <div className="m-auto">
                 {/* <FontAwesomeIcon className="ml-2" icon={faJs} /> */}
                 <Image src={item.logo} alt={item.desc} width={64} height={64}></Image>

@@ -5,10 +5,10 @@ import Image from "next/image";
 const Experiences = () => {
   return (
     // <div id="experiences" className="sticky top-0">
-    <div id="experiences" className="m-6">
-      <div className="bg-custom-obsidian min-h-96 w-full rounded-xl p-8 md:p-16 text-custom-yellow">
+    <div id="experiences" className="m-4 md:m-6">
+      <div className="bg-custom-obsidian min-h-96 w-full rounded-xl shadow-lg p-8 md:p-16 text-custom-yellow">
         <div className="text-4xl font-extrabold text-center">Experiences</div>
-        <div className="flex flex-col justify-center md:px-20 px-8 pt-8 mt-8">
+        <div className="flex flex-col justify-center md:px-16 pt-8 mt-8">
           {experiences.map((item, index) => (
             <div key={item.id} className="flex flex-row items-start justify-between">
               {/* Left Column (Office & Dates) */}
