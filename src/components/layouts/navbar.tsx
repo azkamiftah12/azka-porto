@@ -93,25 +93,28 @@ const Navbar = () => {
       </div>
 
       {/* Mobile dropdown menu */}
-      {isMenuOpen && (
-        <div className={`absolute top-full left-0 right-0 mt-2 rounded-md shadow-2xl flex flex-col items-center gap-4 py-6 bg-custom-oil-black text-white md:hidden`}>
-          <div onClick={scrollToTop} className={navClasses("home")}>
-            Home
-          </div>
-          <div onClick={() => scrollToSection("services")} className={navClasses("services")}>
-            Services
-          </div>
-          <div onClick={() => scrollToSection("projects")} className={navClasses("projects")}>
-            Projects
-          </div>
-          <div onClick={() => scrollToSection("experiences")} className={navClasses("experiences")}>
-            Experiences
-          </div>
-          <div onClick={() => scrollToSection("contact")} className={navClasses("contact")}>
-            Contact Me
-          </div>
+      <div
+        className={`absolute top-full left-0 right-0 mt-2 rounded-md shadow-2xl flex flex-col items-center gap-4 py-6 bg-custom-oil-black text-white md:hidden
+          transition-all duration-700 ease-in-out
+          ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}
+        `}
+      >
+        <div onClick={scrollToTop} className={navClasses("home")}>
+          Home
         </div>
-      )}
+        <div onClick={() => scrollToSection("services")} className={navClasses("services")}>
+          Services
+        </div>
+        <div onClick={() => scrollToSection("projects")} className={navClasses("projects")}>
+          Projects
+        </div>
+        <div onClick={() => scrollToSection("experiences")} className={navClasses("experiences")}>
+          Experiences
+        </div>
+        <div onClick={() => scrollToSection("contact")} className={navClasses("contact")}>
+          Contact Me
+        </div>
+      </div>
     </nav>
   );
 };
