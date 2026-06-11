@@ -16,9 +16,7 @@ const Footer = () => {
             <p>
               <span className="text-xs tracking-wide text-gray-500 uppercase"> Call me </span>
 
-              <a href="#" className="block text-2xl font-medium text-custom-yellow font-bold hover:opacity-75 sm:text-3xl">
-                +62 8788-6754-470
-              </a>
+              <span className="block text-2xl font-medium text-custom-yellow font-bold hover:opacity-75 sm:text-3xl">+62 8788-6754-470</span>
             </p>
 
             {/* <ul className="mt-8 space-y-1 text-sm text-gray-700">
@@ -164,7 +162,7 @@ const Footer = () => {
               </li> */}
             </ul>
 
-            <p className="mt-8 text-xs text-gray-500 sm:mt-0">&copy; 2025. Azka Miftah Muhammad. All rights reserved.</p>
+            <p className="mt-8 text-xs text-gray-500 sm:mt-0">&copy; 2025. Azka Miftah Muhammad.</p>
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@ const Contact = () => {
         <div className="text-4xl font-extrabold text-center">About Me</div>
       </div>
 
-      <div className="md:h-72 bg-custom-obsidian p-8 md:p-16 m-4 md:m-6 rounded-xl shadow-lg">
+      <div className="md:h-72 p-8 md:p-16 m-4 md:m-6">
         <div className="grid gap-14 md:grid-cols-3 md:gap-5">
           {cards.map((card, idx) => (
             <div key={idx} className="rounded-xl bg-white p-6 text-center shadow-xl -translate-y-48">
