@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "/img/azka-1.jpg",
+    "image": "/img/projects.png",
     "Title": "Garpu",
     "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
     "dateFrom": "2022",
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "image": "/img/azka-1.jpg",
+    "image": "/img/projects.png",
     "Title": "Pastiori",
     "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
     "dateFrom": "2022",
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "image": "/img/azka-1.jpg",
+    "image": "/img/projects.png",
     "Title": "NTG Elearning",
     "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
     "dateFrom": "2022",

@@ -3,7 +3,7 @@ const MainButton = ({ Text, Icon, Url, ModalId }: { Text: string; Icon: string; 
     return (
       <a
         href={`${Url}`}
-        className="flex justify-center items-center w-fit border border-custom-yellow hover-animate text-custom-obsidian font-bold text-center whitespace-nowrap py-2 px-5 mt-5 rounded-md mb-10 relative overflow-hidden hover:text-custom-white ease-linear duration-500"
+        className="flex justify-center items-center w-fit border border-custom-yellow hover-animate text-custom-obsidian font-bold text-center whitespace-nowrap py-2 px-5 mt-5 rounded-md mb-10 relative overflow-hidden shadow-2xl hover:text-custom-white ease-linear duration-500"
       >
         <div className="inline-flex items-center z-10 text-xl">
           {Text}

@@ -74,3 +74,124 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.services-track {
+  --p: 0;
+  position: relative;
+  height: 300vh;
+}
+
+.services-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .services-sticky { padding: 1.5rem; }
+}
+
+/* 1. Panel grows from a small, very round card to full size (p: 0 → 0.25) */
+.services-panel {
+  --panel: clamp(0, calc(var(--p) / 0.25), 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 2rem 1rem 2.5rem;
+  transform: scale(calc(0.8 + var(--panel) * 0.2));
+  border-radius: calc(56px - var(--panel) * 44px);
+  will-change: transform;
+}
+@media (min-width: 768px) {
+  .services-panel { padding: 4rem 4rem 4.5rem; }
+}
+
+.services-panel.panel-compact {
+  padding-top: clamp(1.25rem, 5vh, 3.5rem);
+  padding-bottom: clamp(1.5rem, 6vh, 4rem);
+}
+/* Scales the whole panel down to fit the screen height (set by useFitToViewport) */
+.fit-wrap {
+  width: 100%;
+  transform: scale(var(--fit, 1));
+  transform-origin: center center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fit-wrap { transform: none; }
+}
+
+/* 2. Title fades in (p: 0.08 → 0.28) */
+.services-title {
+  --t: clamp(0, calc((var(--p) - 0.08) / 0.2), 1);
+  opacity: var(--t);
+  transform: translateY(calc((1 - var(--t)) * 40px));
+}
+
+/* 3. Each card gets its own scroll window, staggered by index.
+      --rise / --shrink can be overridden per component (defaults match the old look) */
+.services-reveal {
+  --start: calc(0.2 + var(--i) / var(--n) * 0.5);
+  --cp: clamp(0, calc((var(--p) - var(--start)) / 0.3), 1);
+  --e: calc(1 - (1 - var(--cp)) * (1 - var(--cp))); /* ease-out */
+  opacity: var(--cp);
+  transform: translateY(calc((1 - var(--e)) * var(--rise, 70px))) scale(calc(1 - (1 - var(--e)) * var(--shrink, 0.15)));
+  will-change: transform, opacity;
+}
+
+/* Timeline: the line draws over exactly the gap between two logos,
+   starting once this logo is mostly in (0.2) and ending as the next one lands */
+.timeline-line {
+  --lp: clamp(0, calc((var(--p) - var(--start) - 0.2) / (0.5 / var(--n))), 1);
+  transform-origin: top;
+  transform: scaleY(var(--lp));
+}
+
+/* Logo pops in place instead of sliding */
+.timeline-dot {
+  transform: scale(calc(0.6 + var(--e) * 0.4));
+}
+
+/* 4. Progress line */
+.services-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: calc(var(--p) * 100%);
+  background: rgb(250 204 21); /* swap for your custom-yellow */
+}
+
+/* Hover spotlight (inner element, so it never fights the scroll transform) */
+.service-card {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.06);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(180px circle at var(--x, 50%) var(--y, 50%), rgb(250 204 21 / 0.2), transparent 70%);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgb(250 204 21 / 0.45);
+}
+.service-card:hover::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .services-track { --p: 1 !important; height: auto; }
+  .services-sticky { position: static; height: auto; }
+  .service-card, .service-card::before { transition: none; }
+}
