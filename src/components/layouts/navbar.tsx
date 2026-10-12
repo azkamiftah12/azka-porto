@@ -61,7 +61,7 @@ const Navbar = () => {
     <nav
       className={`flex items-center justify-between min-h-16 sticky top-4 m-6 rounded-xl px-6 md:px-16 z-20 transition duration-500 ease-in 
         ${transparent ? "bg-transparent text-custom-oil-black" : "bg-custom-oil-black shadow-2xl"} 
-        ${isFaded ? "opacity-30" : "opacity-100"}`}
+        ${isFaded ? "opacity-10" : "opacity-100"}`}
     >
       {/* Logo / Brand */}
       {/* <div onClick={scrollToTop} className="md:hidden text-2xl font-bold cursor-pointer">

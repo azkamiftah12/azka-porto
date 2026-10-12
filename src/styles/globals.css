@@ -69,6 +69,25 @@ body {
 }
 /* popDown animation end  */
 
+@keyframes heroIn {
+  0% {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hero-in {
+  animation: heroIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in { animation: none; }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
