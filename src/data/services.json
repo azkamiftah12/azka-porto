@@ -2,27 +2,27 @@
   {
     "id": 1,
     "logo": "/logo/reactJS.png",
-    "desc": "React JS"
+    "desc": "React"
   },
   {
     "id": 2,
     "logo": "/logo/nextJS.png",
-    "desc": "Next JS"
+    "desc": "Next.js"
   },
   {
     "id": 3,
     "logo": "/logo/nodeJS.png",
-    "desc": "Node JS"
+    "desc": "Node.js"
   },
   {
     "id": 4,
     "logo": "/logo/angularJS.png",
-    "desc": "Angular JS"
+    "desc": "AngularJS"
   },
   {
     "id": 5,
     "logo": "/logo/dotnet.png",
-    "desc": "Dotnet"
+    "desc": ".NET"
   },
   {
     "id": 6,
@@ -32,7 +32,7 @@
   {
     "id": 7,
     "logo": "/logo/codeigniter.png",
-    "desc": "Codeigniter"
+    "desc": "CodeIgniter"
   },
   {
     "id": 8,

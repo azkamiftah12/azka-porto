@@ -1,29 +1,29 @@
 [
   {
     "id": 1,
-    "image": "/img/projects.png",
-    "Title": "Garpu",
-    "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
-    "dateFrom": "2022",
-    "dateTo": "Present",
-    "tags": ["Laravel", "MySQL", "Bootstrap"]
+    "title": "Garpu",
+    "desc": "",
+    "year": "2022",
+    "tags": ["Laravel", "MySQL", "Bootstrap"],
+    "image": "",
+    "url": ""
   },
   {
     "id": 2,
-    "image": "/img/projects.png",
-    "Title": "Pastiori",
-    "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
-    "dateFrom": "2022",
-    "dateTo": "Present",
-    "tags": ["Laravel", "MySQL", "TailwindCSS"]
+    "title": "Pastiori",
+    "desc": "",
+    "year": "2022",
+    "tags": ["Laravel", "MySQL", "TailwindCSS"],
+    "image": "",
+    "url": ""
   },
   {
     "id": 3,
-    "image": "/img/projects.png",
-    "Title": "NTG Elearning",
-    "desc": "Testing lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque fuga quod dicta quaerat hic, debitis unde dolore ut delectus, recusandae et suscipit voluptas dolores! Magni voluptates sint beatae voluptas deserunt?",
-    "dateFrom": "2022",
-    "dateTo": "Present",
-    "tags": ["NextJS", "TailwindCSS"]
+    "title": "NTG Elearning",
+    "desc": "A learning management system website built for Nusa Tekno Global. The design is now sold as a template.",
+    "year": "2023",
+    "tags": ["Next.js", "TailwindCSS"],
+    "image": "",
+    "url": ""
   }
 ]

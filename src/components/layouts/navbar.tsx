@@ -1,121 +1,124 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Menu, X } from "lucide-react";
 
+// Keep in sync with the section ids rendered in src/app/page.tsx
+export const SECTIONS = [
+  { id: "about", label: "About" },
+  { id: "stack", label: "Stack" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+] as const;
+
 const Navbar = () => {
-  const [isFaded, setIsFaded] = useState(false);
-  const [transparent, setTransparent] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState("home");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [active, setActive] = useState<string>("home");
+  const [open, setOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  // Slide away while scrolling down, come back on any upward scroll
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const prev = scrollY.getPrevious() ?? 0;
+    setHidden(y > prev && y > 160 && !open);
+  });
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    const ids = ["home", ...SECTIONS.map((s) => s.id)];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setIsFaded(true);
-      } else {
-        setIsFaded(false);
-      }
-      if (currentScrollY < 2) {
-        setTransparent(true);
-      } else {
-        setTransparent(false);
-      }
-      setLastScrollY(currentScrollY);
-
-      // active section highlight
-      const sections = ["home", "services", "projects", "experiences", "contact"];
-      sections.forEach((sectionId) => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
-            setActiveSection(sectionId);
-          }
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setActiveSection("home");
-    setIsMenuOpen(false);
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    setActiveSection(sectionId);
-    setIsMenuOpen(false);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const navClasses = (id: string) => `text-xl hover:border-b-4 hover:border-custom-yellow cursor-pointer ${activeSection === id ? "border-b-2 border-custom-yellow font-extrabold" : "font-semibold"}`;
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <nav
-      className={`flex items-center justify-between min-h-16 sticky top-4 m-6 rounded-xl px-6 md:px-16 z-20 transition duration-500 ease-in 
-        ${transparent ? "bg-transparent text-custom-oil-black" : "bg-custom-oil-black shadow-2xl"} 
-        ${isFaded ? "opacity-10" : "opacity-100"}`}
+    <motion.header
+      className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6"
+      animate={{ y: hidden ? "-120%" : "0%" }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Logo / Brand */}
-      {/* <div onClick={scrollToTop} className="md:hidden text-2xl font-bold cursor-pointer">
-        Azka Muhammad
-      </div> */}
-
-      {/* Desktop menu */}
-      <div className="hidden md:flex gap-10">
-        <div onClick={scrollToTop} className={navClasses("home")}>
-          Home
-        </div>
-        <div onClick={() => scrollToSection("services")} className={navClasses("services")}>
-          Services
-        </div>
-        <div onClick={() => scrollToSection("projects")} className={navClasses("projects")}>
-          Projects
-        </div>
-        <div onClick={() => scrollToSection("experiences")} className={navClasses("experiences")}>
-          Experiences
-        </div>
-        <div onClick={() => scrollToSection("contact")} className={navClasses("contact")}>
-          Contact Me
-        </div>
-      </div>
-
-      {/* Mobile burger */}
-      <div className="md:hidden">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}</button>
-      </div>
-
-      {/* Mobile dropdown menu */}
-      <div
-        className={`absolute top-full left-0 right-0 mt-2 rounded-md shadow-2xl flex flex-col items-center gap-4 py-6 bg-custom-oil-black text-white md:hidden
-          transition-all duration-700 ease-in-out
-          ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}
-        `}
+      <nav
+        aria-label="Main"
+        className="mx-auto flex h-14 max-w-5xl items-center justify-between rounded-full border border-ink/10 bg-paper/80 pl-5 pr-2 text-ink shadow-[0_8px_30px_rgb(11_18_21/0.08)] backdrop-blur-md"
       >
-        <div onClick={scrollToTop} className={navClasses("home")}>
-          Home
-        </div>
-        <div onClick={() => scrollToSection("services")} className={navClasses("services")}>
-          Services
-        </div>
-        <div onClick={() => scrollToSection("projects")} className={navClasses("projects")}>
-          Projects
-        </div>
-        <div onClick={() => scrollToSection("experiences")} className={navClasses("experiences")}>
-          Experiences
-        </div>
-        <div onClick={() => scrollToSection("contact")} className={navClasses("contact")}>
-          Contact Me
-        </div>
-      </div>
-    </nav>
+        <a href="#home" className="text-lg font-extrabold tracking-tight" onClick={() => setOpen(false)}>
+          Azka
+        </a>
+
+        <ul className="hidden items-center gap-1 md:flex">
+          {SECTIONS.map((s) => (
+            <li key={s.id}>
+              <a
+                href={`#${s.id}`}
+                aria-current={active === s.id ? "true" : undefined}
+                className={`relative block rounded-full px-4 py-2 text-[0.95rem] font-medium transition-colors ${
+                  active === s.id ? "text-ink" : "text-graphite hover:text-ink"
+                }`}
+              >
+                {active === s.id && (
+                  <motion.span layoutId="nav-pill" className="absolute inset-0 -z-10 rounded-full bg-signal" transition={{ type: "spring", stiffness: 400, damping: 34 }} />
+                )}
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          type="button"
+          className="flex h-10 w-10 items-center justify-center rounded-full md:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((o) => !o)}
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+            className="mx-auto mt-2 flex max-w-5xl flex-col rounded-3xl border border-ink/10 bg-paper/95 p-2 text-ink shadow-xl backdrop-blur-md md:hidden"
+          >
+            {SECTIONS.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  onClick={() => setOpen(false)}
+                  aria-current={active === s.id ? "true" : undefined}
+                  className={`block rounded-2xl px-4 py-3 text-lg font-semibold ${active === s.id ? "bg-signal" : ""}`}
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 

@@ -15,7 +15,7 @@
     "logo": "/logo/homecredit.png",
     "office": "PT Home Credit Indonesia",
     "title": "Frontend Developer Intern",
-    "desc": "Contribute to maintaining Home Credit website at homecredit.co.id using Next.js and Node.js. Support Financial Literacy campaign by developing new pages and features that are now accessible to more than 1000 clients. Implemented integration of Home Credit Website with Headless Content Management System for Financial Literacy pages, the solution is now utilized by more than 5 empoyees in the marketing team for managing web content Conducted research on the newest website technologies that could potentially be implemented in Home Credit systems ",
+    "desc": "Contribute to maintaining Home Credit website at homecredit.co.id using Next.js and Node.js. Support Financial Literacy campaign by developing new pages and features that are now accessible to more than 1000 clients. Implemented integration of Home Credit Website with Headless Content Management System for Financial Literacy pages, the solution is now utilized by more than 5 employees in the marketing team for managing web content. Conducted research on the newest website technologies that could potentially be implemented in Home Credit systems.",
     "dateFrom": "August 2023",
     "dateTo": "December 2023",
     "brandColor": "#e11931",
@@ -26,10 +26,10 @@
     "logo": "/logo/ntg.jpeg",
     "office": "PT Nusa Tekno Global",
     "title": "Frontend Engineer Intern",
-    "desc": "1. Developed new website for Learning Management System (LMS) using Next.js. The web design is now being sold as a template Developed and integrated an API that streamlined data flow between the frontend and backend system.",
+    "desc": "Developed a new website for Learning Management System (LMS) using Next.js. The web design is now being sold as a template. Developed and integrated an API that streamlined data flow between the frontend and backend system.",
     "dateFrom": "April 2023",
     "dateTo": "July 2023",
-    "brandColor": "#6f9600 ",
+    "brandColor": "#6f9600",
     "tags": ["ReactJS", "NextJS", "TailwindCSS"]
   }
 ]
