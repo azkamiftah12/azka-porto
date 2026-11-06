@@ -5,8 +5,9 @@
     "desc": "",
     "year": "2022",
     "tags": ["Laravel", "MySQL", "Bootstrap"],
-    "image": "",
-    "url": ""
+    "image": "/img/work-garpu.webp",
+    "url": "",
+    "glow": "255 210 63"
   },
   {
     "id": 2,
@@ -14,8 +15,9 @@
     "desc": "",
     "year": "2022",
     "tags": ["Laravel", "MySQL", "TailwindCSS"],
-    "image": "",
-    "url": ""
+    "image": "/img/work-pastiori.webp",
+    "url": "",
+    "glow": "251 146 60"
   },
   {
     "id": 3,
@@ -23,7 +25,8 @@
     "desc": "A learning management system website built for Nusa Tekno Global. The design is now sold as a template.",
     "year": "2023",
     "tags": ["Next.js", "TailwindCSS"],
-    "image": "",
-    "url": ""
+    "image": "/img/work-ntg.webp",
+    "url": "",
+    "glow": "125 211 252"
   }
 ]

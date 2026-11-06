@@ -9,7 +9,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   if (reduce) return <>{children}</>;
 
   return (
-    <ReactLenis root options={{ lerp: 0.1, anchors: { offset: 0 } }}>
+    // -88px clears the floating navbar so anchor targets never land under it
+    <ReactLenis root options={{ lerp: 0.1, anchors: { offset: -88 } }}>
       {children}
     </ReactLenis>
   );

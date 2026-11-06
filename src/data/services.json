@@ -2,41 +2,57 @@
   {
     "id": 1,
     "logo": "/logo/reactJS.png",
-    "desc": "React"
+    "desc": "React",
+    "usage": "Shipped",
+    "accent": "#61DAFB"
   },
   {
     "id": 2,
     "logo": "/logo/nextJS.png",
-    "desc": "Next.js"
+    "desc": "Next.js",
+    "usage": "Shipped",
+    "accent": "#E8EDF0"
   },
   {
     "id": 3,
     "logo": "/logo/nodeJS.png",
-    "desc": "Node.js"
+    "desc": "Node.js",
+    "usage": "Shipped",
+    "accent": "#5FA04E"
   },
   {
     "id": 4,
     "logo": "/logo/angularJS.png",
-    "desc": "AngularJS"
+    "desc": "AngularJS",
+    "usage": "Daily",
+    "accent": "#DD0031"
   },
   {
     "id": 5,
     "logo": "/logo/dotnet.png",
-    "desc": ".NET"
+    "desc": ".NET",
+    "usage": "Daily",
+    "accent": "#A78BFA"
   },
   {
     "id": 6,
     "logo": "/logo/laravel.png",
-    "desc": "Laravel"
+    "desc": "Laravel",
+    "usage": "Shipped",
+    "accent": "#FF2D20"
   },
   {
     "id": 7,
     "logo": "/logo/codeigniter.png",
-    "desc": "CodeIgniter"
+    "desc": "CodeIgniter",
+    "usage": "Shipped",
+    "accent": "#EE4323"
   },
   {
     "id": 8,
     "logo": "/logo/java.png",
-    "desc": "Java"
+    "desc": "Java",
+    "usage": "Familiar",
+    "accent": "#F89820"
   }
 ]

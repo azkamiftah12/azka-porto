@@ -2,68 +2,254 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  background: #0b1215;
+/* ------------------------------------------------------------------ tokens */
+:root {
+  --void: 5 8 10;
+  --ink: 11 18 21;
+  --paper: 246 246 246;
+  --signal: 255 210 63;
+  --halo: 125 211 252;
+  --iris: 167 139 250;
+  --jade: 52 211 153;
+  --ember: 251 146 60;
+
+  --glass-blur: 22px;
 }
 
-body {
-  background: #f6f6f6;
-  color: #0b1215;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+@layer base {
+  html {
+    background: rgb(var(--void));
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.14) transparent;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  html:not(.lenis) {
-    scroll-behavior: smooth;
+  body {
+    background: rgb(var(--void));
+    color: rgb(var(--paper));
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgb(var(--signal));
+    color: rgb(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--signal));
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
   }
 }
 
-:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 3px;
-  border-radius: 4px;
+@layer components {
+  /*
+    Liquid glass. The look comes from four stacked cues, not from one big blur:
+      1. a diagonal white tint that is brighter at the top-left
+      2. a hairline rim (the border)
+      3. inset highlights on the top and bottom edges, as if light wraps the bevel
+      4. a deep, soft shadow that lifts the pane off the page
+
+    Blur is reserved for chrome-sized surfaces. Full-bleed sections use static
+    gradients instead, because every extra backdrop-filter layer is one more
+    full-screen blur the compositor has to redo on scroll.
+  */
+  .glass {
+    position: relative;
+    isolation: isolate;
+    background:
+      linear-gradient(
+        155deg,
+        rgb(255 255 255 / 0.1) 0%,
+        rgb(255 255 255 / 0.035) 42%,
+        rgb(255 255 255 / 0.055) 100%
+      );
+    border: 1px solid rgb(255 255 255 / 0.1);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.16),
+      inset 0 -1px 0 0 rgb(255 255 255 / 0.05),
+      0 1px 2px rgb(0 0 0 / 0.45),
+      0 24px 60px -28px rgb(0 0 0 / 0.85);
+    backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  }
+
+  /* Lighter variant for small chips that sit inside an already-glass pane */
+  .glass-quiet {
+    --glass-blur: 12px;
+    background: linear-gradient(155deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.025));
+    border: 1px solid rgb(255 255 255 / 0.08);
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.1);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+
+  /* Heavier tint for the navigation bar, which needs to stay legible over anything */
+  .glass-chrome {
+    --glass-blur: 28px;
+    background: linear-gradient(160deg, rgb(18 24 28 / 0.72), rgb(9 13 16 / 0.78));
+    border: 1px solid rgb(255 255 255 / 0.1);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.14),
+      inset 0 -1px 0 0 rgb(255 255 255 / 0.03),
+      0 12px 40px -16px rgb(0 0 0 / 0.9);
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  }
+
+  /*
+    Specular rim: a 1px gradient border painted with a mask, so the highlight
+    sweeps across the top-left edge and fades out — the detail that makes flat
+    translucency read as glass.
+  */
+  .glass-edge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      140deg,
+      rgb(255 255 255 / 0.55),
+      rgb(255 255 255 / 0) 36%,
+      rgb(255 255 255 / 0) 64%,
+      rgb(255 255 255 / 0.2)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /*
+    The cheap sibling of .glass: identical layering, no backdrop-filter. Use it
+    for anything that repeats — cards in a marquee, list rows, chips — because a
+    page full of blurring layers is the fastest way to lose a scroll budget.
+  */
+  .panel {
+    position: relative;
+    background: linear-gradient(
+      155deg,
+      rgb(255 255 255 / 0.075),
+      rgb(255 255 255 / 0.022) 46%,
+      rgb(255 255 255 / 0.04)
+    );
+    border: 1px solid rgb(255 255 255 / 0.09);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.12),
+      0 20px 50px -30px rgb(0 0 0 / 0.9);
+  }
+
+  /* Signal-tinted glass, for the one call to action that should pull the eye */
+  .glass-signal {
+    background: linear-gradient(155deg, rgb(255 210 63 / 0.22), rgb(255 210 63 / 0.06));
+    border-color: rgb(255 210 63 / 0.35);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.22),
+      0 16px 50px -20px rgb(255 210 63 / 0.45);
+  }
+
+  /* Small caps metadata label, used to give every section the same rhythm */
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgb(152 163 169);
+  }
 }
 
-::selection {
-  background: #ffd23f;
-  color: #0b1215;
+/* No backdrop-filter (older Firefox / reduced GPU): fall back to a solid tint */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .glass,
+  .glass-quiet,
+  .glass-chrome {
+    background: rgb(20 27 31 / 0.94);
+  }
 }
 
-/* Display type: Archivo's width axis is animated in the hero */
-.display {
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.035em;
+@layer utilities {
+  /* Display type: Archivo's width axis is animated in the hero and contact heading */
+  .display {
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.035em;
+  }
+
+  /* Fade a scrolling strip out at both ends so it reads as infinite */
+  .mask-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, #ffffff 10%, #b7c2c8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Thin diagonal hairlines, used behind dark panels for a sense of depth */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-/*
-  Hero photo. Size and position are interpolated in CSS from --open (0 → 1),
-  which the Hero component drives from scroll progress.
+/* --------------------------------------------------------------- hero photo
+   Size and position are interpolated in CSS from --open (0 → 1), which the Hero
+   component drives from scroll progress. Keeping this in CSS means the whole
+   expansion happens without a React render.
 */
 .hero-photo {
-  --w0: min(78vw, 40svh);
-  --h0: 50svh;
-  --cy: 46svh;
+  --w0: min(72vw, 34svh);
+  --h0: 36svh;
+  --cy: 42svh;
   position: absolute;
   left: 50%;
   top: calc(var(--cy) * (1 - var(--open, 0)) + 50svh * var(--open, 0));
   width: calc(var(--w0) + (100vw - var(--w0)) * var(--open, 0));
   height: calc(var(--h0) + (100svh - var(--h0)) * var(--open, 0));
-  border-radius: calc(28px * (1 - var(--open, 0)));
+  border-radius: calc(32px * (1 - var(--open, 0)));
   transform: translate(-50%, -50%);
   overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / calc(0.16 * (1 - var(--open, 0)))),
+    0 40px 120px -40px rgb(0 0 0 / 0.95);
 }
 
 @media (min-width: 768px) {
   .hero-photo {
-    --w0: 38svh;
-    --h0: 48svh;
-    --cy: 54svh;
+    --w0: 36svh;
+    --h0: 42svh;
+    --cy: 48svh;
   }
 }
 
-/* button hover loading animation start (used by MainButton) */
+/* ------------------------------------------------------- button hover fill
+   The owner's "loading bar": a fill slides in from the left on hover/focus.
+*/
 .custom-ease-in {
   width: 0;
   transition: width 0.5s ease-in-out;
@@ -74,16 +260,24 @@ body {
   width: 100%;
 }
 
+/* Grain: one static SVG layer over everything. Cheaper than a video overlay and
+   it stops flat gradients from banding on 8-bit displays. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 @media (prefers-reduced-motion: reduce) {
   .custom-ease-in {
     transition: none;
   }
-}
-/* button hover loading animation end */
-
-.no-scrollbar {
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+  .animate-marquee,
+  .animate-float,
+  .animate-pulse-dot {
+    animation: none !important;
+  }
 }
